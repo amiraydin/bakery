@@ -1,8 +1,8 @@
 import React from "react";
-// import Pay from "./compenants/Pay";
+import Pay from "./compenants/Pay";
 import Add from "./compenants/Add";
+import Button from "./compenants/Button"
 import List from "./compenants/List";
-import Button from "./compenants/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import * as yup from 'yup'
 
@@ -17,27 +17,24 @@ class App extends React.Component {
     };
   }
 
-  selectAdd = (e) => {
-    console.log("App.js selectAdd e.target.value", e.target.value);
-    this.setState({ activeTab: e.target.value });
-  };
-  selectList = (e) => {
-    console.log(e.target.value);
-  };
-  selectPay = (e) => {
-    console.log(e.target.value);
-  };
+  isSelected = (e) => {
+    this.state.activeTab !== e.target.value && this.setState({ activeTab: e.target.value })
+    console.log('this.state.activeTab', this.state.activeTab);
+  }
+
 
   render() {
     return (
       <>
         <div className="container">
-          <Button onChange={this.selectAdd} >Add</Button>
-          <Button onChange={this.selectList}>List</Button>
-          <Button onChange={this.selectPay}>Pay</Button>
+          <Button value="add" onClick={this.isSelected} />
+          <Button value="list" onClick={this.isSelected} />
+          <Button value="pay" onClick={this.isSelected} />
 
-          <Add />
-          <List />
+          <div>{this.state.activeTab === "add" && <Add />}
+            {this.state.activeTab === "list" && <List />}
+            {this.state.activeTab === "pay" && <Pay />}
+          </div>
         </div>
       </>
     );
