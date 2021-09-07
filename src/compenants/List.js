@@ -1,9 +1,29 @@
 import React from "react";
 
-class List extends React.Component {
+export default class List extends React.Component {
   render() {
-    return <h1>List</h1>;
+    console.log(this.props);
+    return (
+
+      <>
+        <div className='container'>
+          <div>
+            <h1>List</h1>
+            <ul>
+              {this.props.items.map(item => {
+                console.log(item);
+                return (
+                  <li>
+                    {item.name} :<strong>{item.price}$ </strong>
+                  </li>
+                )
+
+              })}
+            </ul>
+          </div>
+        </div>
+      </>
+
+    )
   }
 }
-
-export default List;
