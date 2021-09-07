@@ -24,7 +24,30 @@ class App extends Component {
   }
 
   addItem = (itemName, itemPrice) => {
+    /*let products = this.state.items;
+    products.push({name: name, price: price});
+    this.setState({
+      items: products
+    });*/
     this.setState({ items: [...this.state.items, { name: itemName, price: itemPrice }] })
+  }
+
+  removeItem = (item) => {
+    /*let newItems = this.state.items;
+    newItems.forEach(i => {
+      if (item === i) {
+        newItems.splice(newItems.indexOf(item), 1);
+      }
+    });
+    this.setState({
+      items: newItems
+    });*/
+    this.setState({
+      items: this.state.items.filter(product => (
+        product !== item
+      ))
+    });
+    localStorage.setItem("product", item.name);
   }
 
   render() {
@@ -46,7 +69,7 @@ class App extends Component {
             </Button>
           </div>
           {this.state.activeTab === "add" && <Add addItem={this.addItem} />}
-          {this.state.activeTab === "list" && <List items={this.state.items} />}
+          {this.state.activeTab === "list" && <List items={this.state.items} removeItem={this.removeItem} />}
           {this.state.activeTab === "pay" && <Pay items={this.state.items} />}
         </div>
       </>

@@ -14,7 +14,11 @@ export default class List extends React.Component {
                 console.log(item);
                 return (
                   <li>
-                    {item.name} :<strong>{item.price}$ </strong>
+                    <b>Name: </b>{item.name}<br />
+                    <b>Price: </b>{item.price}<br />
+                    <button className="btn btn-danger" onClick={() => this.props.removeItem(item)}>
+                      Supprimer
+                    </button>
                   </li>
                 )
 

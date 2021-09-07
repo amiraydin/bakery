@@ -20,19 +20,17 @@ export default class Card extends Component {
 
     }
     render() {
-        // console.log(this.props.name);
+        const { name, price, onClick } = this.props;
         return (
             <>
                 <div className='container'>
                     <div className='row col'>
-                        <button onClick={() => (
-                            this.props.onClick(this.props.name, this.props.price)
-                        )}>
-                            <img
+                        <button onClick={() => onClick(name, price)}>
 
+                            <img
                                 style={{ width: 200 }}
                                 src={this.state.image}
-                                alt='imag of product' />
+                                alt='default' />
                         </button>
                     </div>
                 </div>

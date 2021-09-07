@@ -41,6 +41,7 @@ class Add extends React.Component {
               <input
                 className='col-8 mt-3 mx-3'
                 type="range"
+                step={0.1}
                 min="0"
                 max="10"
                 onChange={this.handlePriceChange}
